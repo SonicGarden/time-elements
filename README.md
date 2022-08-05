@@ -1,21 +1,20 @@
-# &lt;custom-element&gt; element
-
-Boilerplate for creating a custom element.
+# &lt;time&gt; element extensions
 
 ## Installation
 
 ```
-$ npm install @github/custom-element-element
+$ npm install @sonicgarden/time-elements
 ```
 
 ## Usage
 
 ```js
-import '@github/custom-element-element'
+import '@sonicgarden/time-elements'
 ```
 
 ```html
-<custom-element></custom-element>
+<local-time datetime="2022-08-01 10:00:00" format="YYYY年MM月DD日(ddd) HH時mm分">
+</local-time>
 ```
 
 ## Browser support
@@ -33,8 +32,8 @@ Browsers without native [custom element support][support] require a [polyfill][]
 ## Development
 
 ```
-npm install
-npm test
+pnpm install
+pnpm test
 ```
 
 ## License

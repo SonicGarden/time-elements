@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "target": "es2017",
-    "lib": ["es2018", "dom"],
+    "target": "es2021",
+    "lib": [
+      "es2021",
+      "dom",
+    ],
     "strict": true,
     "declaration": true,
     "outDir": "dist",
@@ -10,5 +13,8 @@
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "exclude": [
+    "test/*.ts"
+  ]
 }
