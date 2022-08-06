@@ -1,25 +1,43 @@
 import {formatDate, normalizeDate} from './utils'
 
+type State = {
+  date: Date
+}
+const states = new WeakMap<LocalTimeElement, State>()
+
 class LocalTimeElement extends HTMLElement {
   static get observedAttributes(): string[] {
-    return ['datetime', 'format', 'locale']
+    return ['datetime', 'format', 'locale', 'content']
   }
 
   connectedCallback(): void {
+    this.updateDate()
     this.render()
   }
 
-  attributeChangedCallback(): void {
+  attributeChangedCallback(attrName: string): void {
+    if (attrName === 'datetime') {
+      this.updateDate()
+    }
+
     this.render()
   }
 
   render(): void {
-    const date = normalizeDate(this.datetime)
-    const humanReadable = formatDate(date, this.format, this.locale)
-    const title = formatDate(date, 'YYYY-MM-DD HH:mm')
+    const humanReadable = formatDate(this.date, this.format, this.locale)
+    const title = formatDate(this.date, 'YYYY-MM-DD HH:mm')
 
     this.setAttribute('title', title)
-    this.textContent = humanReadable
+    this.textContent = this.content ?? humanReadable
+  }
+
+  private updateDate() {
+    const state = {date: normalizeDate(this.datetime)}
+    states.set(this, state)
+  }
+
+  get date(): Date {
+    return states.get(this)?.date ?? new Date()
   }
 
   get format(): string {
@@ -44,6 +62,14 @@ class LocalTimeElement extends HTMLElement {
 
   set locale(value) {
     value ? this.setAttribute('locale', value) : this.removeAttribute('locale')
+  }
+
+  get content(): string | undefined {
+    return this.getAttribute('content') ?? undefined
+  }
+
+  set content(value) {
+    value ? this.setAttribute('content', value) : this.removeAttribute('content')
   }
 }
 

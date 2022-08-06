@@ -2,14 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>custom-element demo</title>
+    <title>time-elements demo</title>
   </head>
   <body>
-    <local-time datetime="2022-08-01 10:00:00" format="YYYY年MM月DD日(ddd) HH時mm分" locale="ja-JP"></local-time>
+    <ul>
+      <li>
+        <local-time datetime="2022-08-01 10:00:00" format="YYYY年MM月DD日(ddd) HH時mm分" locale="ja-JP"></local-time>
+      </li>
+      <li id="time-ago">
+      </li>
+    </ul>
 
     <script type="module">
       // import 'https://unpkg.com/@github/custom-element-boilerplate@latest/dist/custom-element.js'
       import '../src/local-time-element.ts'
+      import '../src/time-ago-element.ts'
+
+      const li = document.querySelector('#time-ago')
+      const timeAgo = document.createElement('time-ago')
+      timeAgo.datetime = new Date(Date.now() - 10000).toLocaleString()
+      timeAgo.interval = 10000
+      li.append(timeAgo)
     </script>
   </body>
 </html>
