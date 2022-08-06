@@ -2,7 +2,7 @@ import LocalTimeElement from './local-time-element'
 import {timeAgoFromMs} from './relative-utils'
 
 const DEFAULT_THRESHOLD = 86400
-const DEFAULT_INTERVAL = 30000
+const DEFAULT_INTERVAL = 30
 
 type State = {
   timer?: number
@@ -46,7 +46,7 @@ class TimeAgoElement extends LocalTimeElement {
 
   get interval(): number {
     const interval = this.getAttribute('interval')
-    return interval ? Number.parseInt(interval, 10) : DEFAULT_INTERVAL
+    return (interval ? Number.parseInt(interval, 10) : DEFAULT_INTERVAL) * 1000
   }
 
   set interval(value: number) {

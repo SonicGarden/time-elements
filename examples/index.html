@@ -14,14 +14,14 @@
     </ul>
 
     <script type="module">
-      // import 'https://unpkg.com/@github/custom-element-boilerplate@latest/dist/custom-element.js'
-      import '../src/local-time-element.ts'
-      import '../src/time-ago-element.ts'
+      import 'https://cdn.skypack.dev/@sonicgarden/time-elements'
+      // import '../src/local-time-element.ts'
+      // import '../src/time-ago-element.ts'
 
       const li = document.querySelector('#time-ago')
       const timeAgo = document.createElement('time-ago')
       timeAgo.datetime = new Date(Date.now() - 10000).toLocaleString()
-      timeAgo.interval = 10000
+      timeAgo.interval = 10
       li.append(timeAgo)
     </script>
   </body>
