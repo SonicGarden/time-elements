@@ -27,7 +27,7 @@ class TimeAgoElement extends LocalTimeElement {
   get content() {
     const value = this.getAttribute('threshold')
     const threshold = value ? Number.parseInt(value, 10) : DEFAULT_THRESHOLD
-    const ms = Date.now() - this.date.getTime()
+    const ms = Math.round((Date.now() - this.date.getTime()) / 10000) * 10000
     return ms < threshold * 1000 ? timeAgoFromMs(ms, this.locale) : undefined
   }
 

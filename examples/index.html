@@ -20,8 +20,8 @@
 
       const li = document.querySelector('#time-ago')
       const timeAgo = document.createElement('time-ago')
-      timeAgo.datetime = new Date(Date.now() - 10000).toLocaleString()
-      timeAgo.interval = 10
+      timeAgo.datetime = new Date(Date.now()).toLocaleString()
+      timeAgo.interval = 1
       li.append(timeAgo)
     </script>
   </body>

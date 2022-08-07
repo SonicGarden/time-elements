@@ -1,6 +1,6 @@
 {
   "name": "@sonicgarden/time-elements",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Web component extensions to the standard <time> element.",
   "module": "dist/index.js",
   "type": "module",
